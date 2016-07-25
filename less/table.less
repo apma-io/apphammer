@@ -1,0 +1,22 @@
+.ah-pretty-table {
+  width: 100%;  
+  border-spacing: 0px;
+}
+
+.ah-pretty-table th {
+  text-align: left;
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.ah-pretty-table tr {
+  background: @primary;
+}
+
+.ah-pretty-table tr:nth-child(odd) {
+  background: lighten(@primary, 2);
+}
+
+.ah-pretty-table tr:hover {
+  background: @primary-light;
+}

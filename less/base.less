@@ -1,0 +1,246 @@
+
+
+.ah-noselection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor:default !important;
+}
+
+html, body {
+  width:100%;
+  height:100%;
+  margin:0 0;
+  font-family:@primary-font;
+  .ah-noselection;
+}
+
+h4 {
+  text-align: center;
+  font-weight: 100;
+}
+
+.ah-transition {
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+.ah-transition-color {
+  transition:0.2s ease background; 
+  -moz-transition:0.2s ease background; 
+  -webkit-transition:0.2s ease background;
+}
+
+.ah-transition-opacity {
+  transition:0.2s ease opacity; 
+  -moz-transition:0.2s ease opacity; 
+  -webkit-transition:0.2s ease opacity;
+}
+
+.ah-box-size {
+  box-sizing:border-box !important;
+  -moz-box-sizing:border-box !important;
+  -webkit-box-sizing:border-box !important;
+}
+
+.ah-stretch {
+  box-sizing:border-box !important;
+  -moz-box-sizing:border-box !important;
+  -webkit-box-sizing:border-box !important;
+  width:100%;
+}
+
+.ah-stretch-vert {
+  box-sizing:border-box !important;
+  -moz-box-sizing:border-box !important;
+  -webkit-box-sizing:border-box !important;
+  height:100%;
+}
+
+.ah-prettyscroll::-webkit-scrollbar {
+  height: 11px;
+  width: 11px;
+  background: none;
+  border:none;
+}
+
+.ah-prettyscroll::-webkit-scrollbar-thumb {
+  border:none;
+  margin:1px;
+
+  background: @primary-dark;
+  -webkit-border-radius: 5ex;
+  -webkit-box-shadow: none;/*0px 1px 2px rgba(0, 0, 0, 0.75);*/
+
+  .ah-transition;
+}
+
+.ah-prettyscroll::-webkit-scrollbar-thumb:hover {
+  background:@primary-light;
+}
+
+.ah-prettyscroll::-webkit-scrollbar-corner {
+  background: @primary;
+}
+
+.ah-pal {
+  width:24px;
+  height:24px;
+  display:inline-block;
+}
+
+.ah-pal-col1 {
+  background: @window-background;
+  .ah-pal;
+}
+
+.ah-pal-col2 {
+  background: @primary;
+  .ah-pal;
+}
+
+.ah-pal-col3 {
+  background: @accent;
+  .ah-pal;
+}
+
+.ah-pal-col4 {
+  background: @highlight;
+  .ah-pal;
+}
+
+.ah-pal-col5 {
+  background: @ok;
+  .ah-pal;
+}
+
+.ah-pal-col6 {
+  background: @cancel;
+  .ah-pal;
+}
+
+.ah-fill-width {
+  width: 100%;
+}
+
+.ah-center {
+  text-align:center;
+}
+
+.ah-meta-widget {
+  font-family: 'Roboto';
+  font-weight:100;
+  outline:none;
+  border:0;
+  height:100%;
+  //background:none;
+  font-size:18px;
+  //color:@primary-text;
+  color:@primary-text;
+  background:none;
+
+  .ah-box-size;
+  .ah-transition;
+}
+
+.ah-meta-widget:focus {
+  //background:@highlight !important;
+  color:@accent;
+}
+
+button {
+  min-width:150px;
+  font-family:'Roboto';
+  font-weight:100;
+  font-size:15px;
+  margin-right:4px;
+  padding:4px;
+  text-align: center;
+  border-radius: 0px;
+  color:@primary-text-highlight;
+  background:@accent;
+  outline:none;
+  //border-color:@primary-text-highlight;
+
+  border:none;
+
+  .ah-transition;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  background:@accent !important;
+  color:@accent-text !important;
+}
+
+button:disabled {
+  color:mix(@primary, @primary-text-highlight, 20);
+}
+
+.ok {
+  background: @ok !important;
+  color:@ok-text !important;
+}
+
+.cancel {
+  background: @cancel !important;
+  color:@cancel-text !important;
+}
+
+.cancel-text {
+  color: @cancel-text !important;
+}
+
+.ah-primary-bg {
+  background: @primary;
+}
+
+.ah-primary {
+  background:@primary;
+  color:@primary-text;
+}
+
+.ah-primary-dark {
+  background:@primary-dark;
+  color:@primary-text;
+}
+
+.ah-accent {
+  background:@accent;
+  color:@accent-text;
+}
+
+.ah-window-color {
+  background: @window-background;
+  color: @window-text;
+}
+
+@import "ctxmenu.less";
+@import "window.less";
+@import "catcher.less";
+@import "snackbar.less";
+@import "accordion.less";
+@import "sidemenu.less";
+@import "droptarget.less";
+@import "colorpicker.less";
+@import "toolbar.less";
+@import "filemenu.less";
+@import "tabcontrol.less";
+@import "richselect.less";
+@import "list.less";
+@import "pgrid.less";
+@import "tooltip.less";
+@import "form.less";
+@import "searchabletree.less";
+@import "fourgrid.less";
+@import "searchlist.less";
+@import "embhtml.less";
+@import "tree.less";
+@import "table.less";

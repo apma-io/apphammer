@@ -1,0 +1,47 @@
+.ah-accordion {
+  width:100%;
+  height:100%;
+  overflow-y: auto;
+}
+
+.ah-accordion-pane-header {
+  padding-left:10px;
+  padding-right:10px;
+  height:2em;
+  line-height:2em;
+  background:@primary;
+  color:@primary-text;
+
+  border-bottom:1px solid lighten(@primary, 5);
+  //border-top:2px groove lighten(@primary, 5);
+}
+
+.ah-accordion-pane-header:hover {
+  color:lighten(@primary-text, 20);
+}
+
+.ah-accordion-pane-header .title {
+ // text-shadow:#000 0 -2px;
+}
+
+.ah-accordion-pane-header .icon {
+  margin-right:10px;
+  text-align:center;
+  width:1em;
+
+  transition:0.2s ease transform; 
+  -moz-transition:0.2s ease transform; 
+  -webkit-transition:0.2s ease -webkit-transform;
+}
+
+.ah-accordion-pane-body {
+  overflow-y:hidden;
+  visibility:hidden;
+  background:@window-background;
+  color:@window-text;
+  height:0px;
+
+   transition:0.2s ease height; 
+  -moz-transition:0.2s ease height; 
+  -webkit-transition:0.2s ease height;
+}

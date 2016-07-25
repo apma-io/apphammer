@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Apphammer App</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+
+    <link href='../css/dark.css' rel='stylesheet' type='text/css'>
+
+    <script src="../socket.io/socket.io.js"></script>
+    <script src="../dependencies/uuid.js"></script>
+
+    <script src="../src/ah.js"></script>
+    <script src="../src/ah.typechecks.js"></script>
+    <script src="../src/ah.events.js"></script>
+    <script src="../src/ah.dom.js"></script>
+    <script src="../src/ah.mover.js"></script>
+    <script src="../src/ah.resizer.js"></script>
+    <script src="../src/ah.syncstore.js"></script>
+    <script src="../src/ah.snackbar.js"></script>
+    <script src="../src/ah.catcher.js"></script>
+    <script src="../src/ah.dnd.js"></script>
+    <script src="../src/ah.tooltip.js"></script>
+    <script src="../src/ah.hotkeymanager.js"></script>
+    <script src="../src/ui/ah.ui.window.js"></script>
+    <script src="../src/ui/ah.ui.ctxmenu.js"></script>
+    <script src="../src/ui/ah.ui.accordion.js"></script>
+    <script src="../src/ui/ah.ui.sidemenu.js"></script>
+    <script src="../src/ui/ah.ui.list.js"></script>
+    <script src="../src/ui/ah.ui.toolbar.js"></script>
+    <script src="../src/ui/ah.ui.colorpicker.js"></script>
+    <script src="../src/ui/ah.ui.filemenu.js"></script>
+    <script src="../src/ui/ah.ui.tabcontrol.js"></script>
+    <script src="../src/ui/ah.ui.standardlayout.js"></script>
+    <script src="../src/ui/ah.ui.richselect.js"></script>
+    <script src="../src/ui/ah.ui.propertygrid.js"></script>
+    <script src="../src/ui/ah.ui.metafield.js"></script>
+    <script src="../src/ui/ah.ui.form.js"></script>
+    <script src="../src/ui/ah.ui.part.js"></script>
+    <script src="../src/ui/ah.ui.part.factory.js"></script>
+
+  </head>
+<body>
+</body>
+<script>
+  
+  
+  var ss = ah.SyncStore('test'),
+   meta = {
+    foo: {
+      title: 'Hello world',
+      type: 'input',
+      help: 'Change the hello world attribute'
+    },
+    bar: {
+      title: 'Whats up',
+      type: 'input'
+    },
+    what: {
+      category: 'design',
+      title: 'Check it!',
+      type: 'checkbox'
+    }
+  };
+ 
+ ss.connect();
+ 
+  ah.ui.part({
+    name: 'MainToolbar',
+    type: 'toolbar',
+    left: [
+      'MainFilemenu',
+      {
+        icon: 'user',
+        click: function () {
+          alert('wat');
+        }
+      }
+    ],
+    right: [
+      {
+        icon: 'gear',
+        click: ah.ui.partFn('TestWindow', 'activate')
+      },
+      {
+        icon: 'file',
+        click: ah.ui.partFn('Sidemenu', 'toggle')
+      },
+      {
+        icon: 'trash',
+        click: function () {
+          
+        }
+      }
+    ]
+    
+  });
+  
+  ah.ui.part({
+     name: 'MainFilemenu',
+     type: 'filemenu',
+     items: {
+      File: {
+        children: {
+          Open: {},
+          Save: {}
+        }
+      },
+      View: {
+        
+      } 
+     }
+  });
+  
+  ah.ui.part({
+    name: 'TestWindow',
+    type: 'window',
+    title: 'well that worked',
+    body: 'MyForm',
+    events: {
+      Show: function () {
+        ah.snackBar('showing window!');
+        ah.ui.part('MyForm', function (form) {
+           form.load(meta, 'first', ah.SyncStore('test'));
+        });
+        
+      },
+      Hide: function () {
+        ah.snackBar('hiding window!');
+      }
+    }
+  
+  });
+  
+  ah.ui.part({
+    name: 'PGrid',
+    type: 'propertygrid',
+    schema: meta
+  });
+  
+  ah.ui.part({
+    name: 'CTX',
+    type: 'ctxmenu',
+    attachTo: 'Sidemenu',
+    rightClick: true,
+    items: {
+      hello: {},
+      world: {}
+    }
+  });
+  
+  ah.ui.part({
+    name: 'Sidemenu',
+    type: 'sidemenu',
+    body: ['PGrid'],
+    events: {
+      Show: function () {
+        ah.ui.part('PGrid', function (grid) {
+          grid.load(meta, 'first', ah.SyncStore('test'));
+        });
+      }
+    }
+  });
+  
+  ah.ui.part({
+    name: 'MyForm',
+    type: 'form'
+  });
+  
+  ah.ui.partPatch('TestWindow', {
+    title: 'patching works too!'
+  });
+  
+  ah.init();
+
+</script>
+</html>

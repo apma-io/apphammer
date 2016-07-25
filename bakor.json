@@ -1,0 +1,49 @@
+{
+  "name": "apphammer",
+  "outputDir": "./build",  
+
+  "js": [
+    "src/ah.js",
+    "src/ah.typechecks.js",
+    "src/ah.events.js",
+    "src/ah.dom.js",
+    "src/ah.ajax.js",
+    "src/ah.catcher.js",
+    "src/ah.hotkeymanager.js",
+    "src/ah.mover.js",
+    "src/ah.resizer.js",
+    "src/ah.snackbar.js",
+    "src/ah.syncstore.js",
+    "src/ah.dnd.js",
+    "src/ah.tooltip.js",
+
+    "src/ui/ah.ui.window.js",
+    "src/ui/ah.ui.form.js",
+    "src/ui/ah.ui.accordion.js",
+    "src/ui/ah.ui.ctxmenu.js",
+    "src/ui/ah.ui.list.js",
+    "src/ui/ah.ui.sidemenu.js",
+    "src/ui/ah.ui.colorpicker.js",
+    "src/ui/ah.ui.toolbar.js",
+    "src/ui/ah.ui.filemenu.js",
+    "src/ui/ah.ui.tabcontrol.js",
+    "src/ui/ah.ui.richselect.js",
+    "src/ui/ah.ui.propertygrid.js",
+    "src/ui/ah.ui.searchabletree.js",
+    "src/ui/ah.ui.metafield.js",
+    "src/ui/ah.ui.codeeditor.js",
+    "src/ui/ah.ui.embeddedhtml.js",
+    "src/ui/ah.ui.fourgrid.js",
+    "src/ui/ah.ui.searchlist.js",
+    "src/ui/ah.ui.vsplitter.js",
+    "src/ui/ah.ui.hsplitter.js",
+    "src/ui/ah.ui.tree.js",
+    "src/ui/ah.ui.part.js",
+    "src/ui/ah.ui.part.factory.js"
+  ],
+  "css": [],
+  "less": [
+    "less/dark.less",
+    "less/light.less"
+  ]
+}

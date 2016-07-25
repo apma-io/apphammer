@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Apphammer Tests</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+
+    <link href='./../css/dark.css' rel='stylesheet' type='text/css'>
+
+    <script src="http://127.0.0.1:3004/socket.io/socket.io.js"></script>
+
+    <script src="./../dependencies/uuid.js"></script>
+    <script src="./../dependencies/ace/ace.js"></script>
+    <script src="./../dependencies/ace/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./../dependencies/ace/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./../dependencies/ace/mode-html.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./../dependencies/ace/mode-css.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="./../src/ah.js"></script>
+    <script src="./../src/ah.typechecks.js"></script>
+    <script src="./../src/ah.events.js"></script>
+    <script src="./../src/ah.dom.js"></script>
+    <script src="./../src/ah.mover.js"></script>
+    <script src="./../src/ah.resizer.js"></script>
+    <script src="./../src/ah.syncstore.js"></script>
+    <script src="./../src/ah.snackbar.js"></script>
+    <script src="./../src/ah.catcher.js"></script>
+    <script src="./../src/ah.dnd.js"></script>
+    <script src="./../src/ah.tooltip.js"></script>
+    <script src="./../src/ah.hotkeymanager.js"></script>
+    <script src="./../src/ui/ah.ui.window.js"></script>
+    <script src="./../src/ui/ah.ui.ctxmenu.js"></script>
+    <script src="./../src/ui/ah.ui.accordion.js"></script>
+    <script src="./../src/ui/ah.ui.sidemenu.js"></script>
+    <script src="./../src/ui/ah.ui.list.js"></script>
+    <script src="./../src/ui/ah.ui.toolbar.js"></script>
+    <script src="./../src/ui/ah.ui.colorpicker.js"></script>
+    <script src="./../src/ui/ah.ui.filemenu.js"></script>
+    <script src="./../src/ui/ah.ui.tabcontrol.js"></script>
+    <script src="./../src/ui/ah.ui.standardlayout.js"></script>
+    <script src="./../src/ui/ah.ui.richselect.js"></script>
+    <script src="./../src/ui/ah.ui.propertygrid.js"></script>
+    <script src="./../src/ui/ah.ui.metafield.js"></script>
+    <script src="./../src/ui/ah.ui.searchabletree.js"></script>
+    <script src="./../src/ui/ah.ui.form.js"></script>
+    <script src="./../src/ui/ah.ui.part.js"></script>
+    <script src="./../src/ui/ah.ui.part.factory.js"></script>
+    <script src="./../src/ui/ah.ui.fourgrid.js"></script>
+    <script src="./../src/ui/ah.ui.codeeditor.js"></script>
+    <script src="./../src/ui/ah.ui.searchlist.js"></script>
+    <script src="./../src/ui/ah.ui.embeddedhtml.js"></script>
+
+  </head>
+
+<body>
+
+</body>
+
+<script>
+  
+    ah.init();
+
+(function () {
+
+  var //win = ah.ui.Window(),
+      win2 = ah.ui.Window(),
+      cmenu = ah.ui.ContextMenu(),
+      sm = ah.ui.SideMenu(),
+      acc = ah.ui.Accordion(sm.body),
+      tbar = ah.ui.Toolbar(document.body),
+      fmenu = ah.ui.FileMenu(),
+      tabc = ah.ui.TabControl(win2.body),
+      themeSelect = ah.dom.cr('select'),
+      rsel = ah.ui.RichSelect(),
+      list = ah.ui.List(),
+      win3 = ah.ui.Window(),
+      fgrid = ah.ui.FourGrid(win3.body),
+      st = ah.ui.SearchableTree(),
+      sl = ah.ui.SearchList()
+  ;
+  
+  sl.load(['somefile.css', 'someotherfile.js', 'hello.css', 'world.js', 'foo.js', 'bar.js']);
+  sl.show(100, 100);
+  
+  ah.registerHotkey('cmd+p', sl.show);
+  
+  sl.on('Select', function (item) {
+    var mode = 'JS';
+    
+    if (item.lastIndexOf('js') === item.length - 3) {
+      
+    }
+    
+    console.log('Selected ' + item);
+    fgrid.TL.setTitle(item);
+  });
+  
+  var e = ace.edit(fgrid.TL.body);
+  e.setTheme("ace/theme/twilight");
+  
+  var JavaScriptMode = ace.require("ace/mode/javascript").Mode;
+    e.getSession().setMode(new JavaScriptMode());
+  
+  win3.on('Resize', fgrid.resize);
+  
+  fgrid.on('Resize', function () {
+     e.resize();
+  });
+  
+  win3.show();
+  
+  fgrid.TR.setTitle('some.css');
+  fgrid.BL.setTitle('FLOW');
+  fgrid.BR.setTitle('PREVIEW');
+  
+  fgrid.on('Resize', ah.ui.CodeEditor(fgrid.TR.body, {mode: 'CSS'}).resize);
+  
+  st.setLibrary({
+    foo: [
+      {
+        name: 'hello'
+      }
+    ],
+    bar: [
+      {
+        name: 'world'
+      }
+    ]
+    
+  });
+
+  ah.dom.ap(themeSelect, ah.dom.cr('option', '', 'Twilight', 'twilight'));
+  ah.dom.ap(themeSelect, ah.dom.cr('option', '', 'Monokai', 'monokai'));
+  ah.dom.ap(themeSelect, ah.dom.cr('option', '', 'Dark Gray', 'dark'));
+  ah.dom.ap(themeSelect, ah.dom.cr('option', '', 'Light Gray', 'light'));
+
+  list.addItem({
+    title: 'Test',
+    icons: [
+      {
+        faicon: 'close'
+      }
+    ]
+  });
+
+  list.addItem({
+    title: 'Test',
+    icons: [
+      {
+        faicon: 'close'
+      }
+    ]
+  });
+
+  list.addItem({
+    title: 'Test',
+    icons: [
+      {
+        faicon: 'close'
+      }
+    ]
+  });
+
+  list.on('AddItemRequest', function (value, fn) {
+    fn(false, {
+      id: value,
+      title: value,
+      icons: [
+        {
+          faicon: 'trash',
+          click: function () {
+            list.remItem(value);
+          }
+        }
+      ]
+    });
+  });
+
+  ah.dom.on(themeSelect, 'change', function () {
+    var id = themeSelect.options[themeSelect.selectedIndex].id,
+        n = ah.dom.cr('link')
+    ;
+
+    n.rel = 'stylesheet';
+    n.type = 'text/css';
+    n.href = './../css/' + id + '.css';
+
+    ah.dom.ap(document.head, n);
+  });
+
+  var ptab = tabc.addTab('bigger tab text here');
+  var ctab = tabc.addTab('color picker');
+  var btab = tabc.addTab('Test Tab');
+
+  rsel.load([
+    {
+      title: 'Text'
+    },
+    {
+      body: ah.dom.cr('div', '', 'in div')
+    }
+
+  ]);
+
+  ah.dom.ap(btab.body, ah.dom.cr('h1', '', 'hello world'));
+
+  ah.dom.ap(ptab.body, list.body);
+
+
+  tbar.apLeft(themeSelect);
+  tbar.apRight(rsel.body);
+  tbar.apLeft(ah.dom.cr('input'));
+
+  tbar.rightIcon({icon: 'user'});
+  tbar.rightIcon({icon: 'gear'});
+
+  tbar.leftIcon({
+    icon: 'exclamation-triangle',
+    click: function () {
+      ah.ui.ColorPicker('#FFF', function () {
+
+      });
+    }
+  });
+
+  win2.on('Resize', tabc.resize);
+
+  acc.Pane('ASSETS');
+  acc.Pane('SETTINGS');
+  acc.Pane('VERSIONING');
+  acc.Pane('TEST PANE');
+  acc.Pane('TEST PANE');
+
+  ah.ui.ColorPickerEmbed(ctab.body, '#FFF', function (col) {
+
+  });
+
+  cmenu.build([
+    {title: 'Toggle Sidebar', subtitle: 'HELLO', faicon: 'remove', click: function () { sm.toggle();  }},
+    {title: 'Hello', subtitle: 'HELLO', faicon: 'remove', click: function () {
+        ah.snackBar('Your application was deployed to AWS', 'CHECK IT OUT');
+    }},
+    {title: 'Color Picker', click: function () {
+      ah.ui.ColorPicker();
+    }},
+    {
+      title: 'I have a child',
+      children: [
+        {title: 'Child 1',click: function () {console.log('clicked child 1');}},
+        {title: 'Child 2'}
+      ]
+    },
+    {
+      title: 'I have a child',
+      children: [
+        {title: 'Child in child', children: [
+          {title: 'A'},
+          {title: 'B'},
+          {title: 'C'},
+          {title: 'D'}
+        ]},
+        {title: 'Child 1',click: function () {console.log('clicked child 1');}},
+        {title: 'Child 2'}
+      ]
+    },
+    {
+      title: 'I have a child',
+      children: [
+        {title: 'Child 1',click: function () {console.log('clicked child 1');}},
+        {title: 'Child 2'}
+      ]
+    }
+  ]);
+
+  cmenu.attach(document.body, true);
+
+  tbar.apLeft(fmenu.body);
+
+  fmenu.build([
+    {
+      title: 'File',
+      children: [{title: 'Open..', faicon: 'folder', subtitle: 'ctrl+o'}, {title: 'Save..', faicon: 'save', subtitle: 'ctrl+s'}, {title: 'C', click: function () {
+        console.log('AHSAIDH');
+      }}]
+    },
+    {
+      title: 'View',
+      children: [{title: 'A'}, {title: 'B'}, {title: 'C'}]
+    }
+
+  ]);
+
+  ah.registerHotkey('meta+alt+s', function() {
+    console.log('ITS\' ALIVE!!');
+  });
+
+//  ah.Draggable(document.getElementById('1'), 'foo', {foo:'bar'});
+  ah.DropTarget(win2.body, 'foo').on('Drop', function (payload) {
+    console.log(payload);
+  });
+  ah.init();
+/*
+  ah.ui.ColorPicker('#FFF', function (color) {
+   // console.log('Selected ' + color);
+    // ah.dom.style(document.body, {
+    //   background: color
+    // });
+  });*/
+
+  //Test syncstore
+  
+
+
+})();
+
+var ss = ah.SyncStore('test'),
+   win = ah.ui.Window(),
+   win2 = ah.ui.Window({
+    title: 'INSPECTOR'
+   }),
+   meta = {
+    foo: {
+      title: 'Hello world',
+      type: 'input',
+      help: 'Change the hello world attribute'
+    },
+    bar: {
+      title: 'Whats up',
+      type: 'input'
+    },
+    what: {
+      category: 'design',
+      title: 'Check it!',
+      type: 'checkbox'
+    }
+  }
+;
+
+
+  var pg = ah.ui.PropertyGrid(win2.body);
+
+  pg.load(meta, 'first', ss);
+
+  ss.connect(function () { });
+  
+  var form = ah.ui.Form(win.body);
+  form.load(meta, 'first', ss);
+
+  
+
+  
+
+</script>
+
+</html>

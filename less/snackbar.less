@@ -1,0 +1,30 @@
+
+.ah-snackbar {
+  opacity: 0;
+  cursor: default;
+  position:fixed;
+  z-index: 1000;
+  left:20px;
+  bottom:-48pt;
+  min-width:288pt;
+  max-width:568pt;
+  border-radius:2pt;
+  font-size:14dpi;
+  height:48pt;
+  line-height:48pt;
+  background:@window-background;
+  color:@window-text;
+  padding-left:24pt;
+  padding-right:24pt;
+  border:1px solid mix(#000, @window-background, 10%);
+}
+
+.ah-snackbar .action {
+  margin-left:24pt;
+  float:right;
+  color:@accent;
+}
+
+.ah-snackbar .action:hover {
+  color:mix(#000, @accent, 20%);
+}

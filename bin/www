@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+/******************************************************************************
+
+  Copyright, 2015 - IQumulus LLC.
+  All rights reserved.
+
+******************************************************************************/
+
+var ah = require(__dirname + '/../lib/apphammer.js');
+
+ah.start({
+  port: 3004,
+  env: 'test',
+  frontend: {
+    jsIncludes: [
+  	 'test.js'
+    ]
+  }
+});
+
+ah.SyncStore('test');
+
+//ah.bakorBuild();

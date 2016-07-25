@@ -1,0 +1,44 @@
+.ah-richselect-options {
+  position: fixed;
+  background:@window-background;
+  z-index:11;
+  max-height: 80%;
+  min-width: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  border:1px solid mix(#000, @window-background, 10%);
+}
+
+.ah-richselect-options .item {
+  overflow: hidden;
+  position: relative;
+  padding:4px;
+  color:@window-text;
+  font-weight: 100;
+  cursor:default;
+  font-size:0.8em;
+  height:2em;
+  width:100%;
+}
+
+.ah-richselect-options .item:hover {
+  color:@highlight-text;
+  background:@highlight;
+  font-weight: 400;
+}
+
+.ah-richselect {
+  
+}
+
+.ah-richselect .item {
+
+}
+
+.ah-richselect .icon {
+  position:absolute;
+  right:0px;
+  top:0px;
+  height:100%;
+}

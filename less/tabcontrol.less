@@ -1,0 +1,82 @@
+.ah-tabcontrol {
+  position:relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ah-tabcontrol .headings {
+  height:48pt;
+  width:100%;
+  background:@primary;
+  position:relative;
+  margin-right:-20pt;
+  line-height:40pt;
+
+  overflow:hidden;
+}
+
+.ah-tabcontrol .body {
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+.ah-tabcontrol .more {
+  position:absolute;
+  background:@primary;
+  opacity:0;
+  right:0px;
+  top:0px;
+  width:20pt;
+  height:48pt;
+  line-height:48pt;
+  color:@accent;
+  text-align:center;
+}
+
+.ah-tabcontrol .headings .more:hover {
+  color:@primary-text-highlight;
+}
+
+.ah-tabcontrol .headings .tab {
+  padding-left:12pt;
+  padding-right:12pt;
+  padding-top:18pt;
+  font-size:1.2em;
+  font-weight:100;
+
+  overflow:hidden;
+  max-width:150px;
+  height:30pt;
+
+  color:@primary-text;
+
+  text-overflow: ellipsis;
+  white-space:nowrap;
+}
+
+.ah-tabcontrol .tab-body {
+  position:absolute;
+  width:100%;
+  height:100%;
+  left:0px;
+  top:0px;
+  opacity: 0;
+  visibility:hidden;
+}
+
+.ah-tabcontrol .headings .tab:hover {
+  color: @primary-text-highlight;
+}
+
+.ah-tabcontrol .headings .tab-active {
+  color: @primary-text-highlight !important;   
+}
+
+.ah-tabcontrol .headings .marker {
+  position:absolute;
+  height:4px;
+  width:100px;
+  background: @accent;
+  bottom:0px;
+}

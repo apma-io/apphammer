@@ -1,0 +1,85 @@
+
+.ah-list {
+  width:100%;
+  //height:100%;
+  padding:4px;
+
+  .ah-stretch;
+}
+
+.ah-list .item {
+  width:100%;
+
+  height:24pt;
+
+  padding:4px;
+
+  font-weight:100;
+
+  .ah-stretch;
+}
+
+.ah-list .item-container {
+  height:200px;
+  border:1px solid mix(#000, @window-background, 10%);
+  background: @primary;
+  overflow:auto;
+}
+
+.ah-list .item:hover {
+
+  background: @highlight;
+  color: @highlight-text;
+}
+
+.ah-list .item-active {
+  background: @highlight;
+  color: @highlight-text;
+}
+
+.ah-list .icons {
+  float: right;
+}
+
+.ah-list .icons .icon:hover {
+  color: @primary-text-highlight;
+}
+
+.ah-list .icons .icon {
+  margin-left:4px;
+}
+
+.ah-list .title {
+  float: left;
+  font-weight:100;
+}
+
+.ah-list .add-container {
+  position:relative;
+  width:100%;
+  //height:100%;
+}
+
+.ah-list .add-container .add {
+  position:absolute;
+  right:3px;
+  top:13px;
+}
+
+.ah-list .add-container .add:hover {
+  color: @primary-text-highlight;
+}
+
+.ah-list .add-container input {
+  margin-top:10px;
+  font-family:'Roboto', sans-serif;
+  font-size:1em;
+  font-weight:100;
+  padding-right:20px;
+  width:100%;
+  outline:none;
+  background: @primary;
+  color: @primary-text-highlight;
+  border:none;
+  .ah-stretch;
+}

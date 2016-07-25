@@ -1,0 +1,72 @@
+.ah-tree {
+  background:@primary;
+  color:@primary-text;
+  min-width:100px;
+  overflow:hidden;
+  width:100%;
+  //height:100%;
+  font-weight:100;
+  font-size:14px;
+  .ah-noselection;
+  .ah-box-size;
+  .ah-transition;
+}
+
+.ah-tree .child {
+  position:relative;
+  height:20px;
+  padding:4px;
+  .ah-transition;
+}
+
+.ah-tree .child:hover {
+  background:@highlight;
+  color:@highlight-text;
+}
+
+.ah-tree .child.highlight {
+  //background:@highlight;
+  color:@highlight-text;
+  font-weight:400;
+}
+
+.ah-tree .child .expander {
+  padding-right:4px;  
+  .ah-transition;
+}
+
+.ah-tree .child .icons {
+  position:absolute;
+  opacity: 0;
+  right:5px;
+  top:5px;
+  width:100px;
+  text-align:right;
+  .ah-transition;
+}
+
+.ah-tree .child .icons .icon {
+  color:@primary-text-highlight;
+  margin-left:6px;
+  .ah-transition;
+}
+
+.ah-tree .child .icons .icon:hover {
+  color:@primary-text;
+}
+
+.ah-tree .child .adder {
+  float:right;
+  color:@primary-light;
+}
+
+.ah-tree .child .adder:hover {
+  color:@primary-text;
+}
+
+.ah-tree .children {
+  position:relative;
+  padding-left:20px;
+  overflow:hidden;
+  .ah-transition;
+}

@@ -1,0 +1,81 @@
+.ah-splitter-hor {
+  position:absolute;
+  left:0px;
+  top:50%;
+  height:4px;
+  width:100%;
+  background:@primary;
+  cursor: ns-resize;
+  z-index:2;
+}
+
+.ah-splitter-hor:hover {
+  background:@primary-light;
+}
+
+.ah-splitter-ver {
+  z-index:2;
+  position:absolute;
+  left:50%;
+  top:0px;
+  width:4px;
+  height:100%;
+  background:@primary;
+  cursor: ew-resize;
+}
+
+.ah-splitter-ver:hover {
+  background:@primary-light;
+}
+
+
+.ah-fourgrid {
+  position:relative;
+  width: 100%;
+  height: 100%;
+  .ah-stretch;
+}
+
+.ah-fourgrid .titlebar {
+  font-size:1em;
+  background:@primary;
+  height:30px;
+  line-height: 30px;
+  text-align: center;
+  color:#afafaf;
+  border-bottom:1px groove mix(@primary, @window-background, 50%);
+  color:@primary-text;
+}
+
+.ah-fourgrid .title {
+  font-weight: 100;
+  color:@primary-text-highlight;
+}
+
+.ah-fourgrid .left {
+  left:0px;
+}
+
+.ah-fourgrid .right {
+  right:0px;
+}
+
+
+.ah-fourgrid .iconbar {
+  position: absolute;
+  color: @primary-text-highlight;
+}
+
+.ah-fourgrid .iconbar .icon {
+  margin:4px;
+}
+
+.ah-fourgrid .iconbar .icon:hover {
+//  opacity: 0.5;
+  color: lighten(@primary-light, 15);
+}
+
+.ah-fourgrid .panel {
+  position:relative;
+  float:left;
+}
